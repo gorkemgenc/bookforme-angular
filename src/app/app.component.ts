@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'bookforme-angular2';
+  title = 'bookforme-angular';
+
+  clickHandler(){
+    alert('Clicking');
+  }
 }
