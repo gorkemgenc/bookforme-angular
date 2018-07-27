@@ -128,8 +128,9 @@
   "defaultProject": "angular-starter",
   "schematics": {
     "@schematics/angular:component": {
-      "prefix": "app",
-      "styleext": "css"
+      "prefix": "bookforme",
+      "styleext": "scss",
+      "spec": false
     },
     "@schematics/angular:directive": {
       "prefix": "app"
