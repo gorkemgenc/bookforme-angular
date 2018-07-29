@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const config = require('./config/dev');
 const app = express();
+const Rental = require('./models/rental');
 
 mongoose.connect(config.DB_URI, {useNewUrlParser: true});
 
