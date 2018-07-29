@@ -3,6 +3,8 @@ import { MapComponent } from './map.component';
 import { AgmCoreModule } from '@agm/core';
 import { MapService } from './map.service'
 
+import { CamelizePipe } from 'ngx-pipes';
+
 @NgModule({
   declarations: [
     MapComponent
@@ -16,7 +18,8 @@ import { MapService } from './map.service'
     })
   ],
   providers: [
-      MapService
+      MapService,
+      CamelizePipe
   ]
 })
 export class MapModule { }
