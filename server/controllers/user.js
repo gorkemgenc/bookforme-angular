@@ -118,19 +118,21 @@ exports.authMiddleware = function(req, res, next){
                 res.locals.user = user;
                 next();
             }else{
-                return res.status(422).send({
-                    'Not authorized' : 'You need to login!'
-                });
+                return notAuthorized(res);
             }
         });
     }
     else{
-        return res.status(422).send({
-            'Not authorized' : 'You need to login!'
-        });
+        return notAuthorized(res);
     }
 }
 
 function parseToken(token){
     return jwt.verify(token.split(' ')[1], config.SECRET);
+}
+
+function notAuthorized(res){
+    return res.status(401).send({
+        'Not authorized' : 'You need to login!'
+    });
 }

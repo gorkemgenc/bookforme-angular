@@ -11,7 +11,7 @@ const rentalRoutes = require('./routes/rentals'),
 // Notice that connect is already promise so use then catch function
 mongoose.connect(config.DB_URI, {useNewUrlParser: true}).then(() => {
     const fakeDb = new FakeDb();
-    //fakeDb.seedDb();
+    fakeDb.seedDb();
 });
 
 // This are middleware
