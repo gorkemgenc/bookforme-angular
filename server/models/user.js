@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
@@ -36,5 +37,16 @@ function minValueError(val, number){
 function maxValueError(val, number){
     return val + 'should be less than ' + number + ' characters!';
 }
+
+userSchema.pre('save', function(next) {
+    const user = this;
+
+    bcrypt.genSalt(10, function(err, salt) {
+        bcrypt.hash(user.password, salt, function(err, hash) {
+            user.password = hash;
+            next();
+        });
+    });
+});
 
 module.exports = mongoose.model('User', userSchema);
