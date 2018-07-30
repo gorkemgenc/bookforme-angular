@@ -5,7 +5,7 @@ const MIN_VALUE = 4;
 const MAX_VALUE = 32
 
 const userSchema = new Schema({
-    userName: {
+    username: {
         type:String,
         min: [MIN_VALUE, minValueError],
         max: [MAX_VALUE, maxValueError],
