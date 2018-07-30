@@ -38,6 +38,10 @@ function maxValueError(val, number){
     return val + 'should be less than ' + number + ' characters!';
 }
 
+userSchema.methods.hasSamePassword = function(requestedPassword){
+    return bcrypt.compareSync(requestedPassword, this.password);
+}
+
 userSchema.pre('save', function(next) {
     const user = this;
 
