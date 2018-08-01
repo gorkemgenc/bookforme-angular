@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import 'rxjs/Rx';
 
 @Injectable()
 export class AuthService{
@@ -10,4 +11,15 @@ export class AuthService{
       public register(userData: any): Observable<any>{
           return this.http.post('api/v1/users/register', userData);
       }
+
+      public login(userData: any): Observable<any>{
+        return this.http.post('api/v1/users/auth', userData).map(
+            (token) => this.saveToken(String(token)));
+    }
+
+    private saveToken(token: string) : string {
+        localStorage.setItem('booking_auth', token);
+
+        return token;
+    }
 }
