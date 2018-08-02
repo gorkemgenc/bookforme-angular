@@ -54,4 +54,8 @@ export class AuthService{
     public getUserName() : string {
         return this.decodedToken.username;
     }
+
+    public getAuthToken(): string{
+        return localStorage.getItem('booking_auth');
+    }
 }
