@@ -20,7 +20,7 @@
         <li *ngIf="auth.isAuthenticated()" class="nav-item">
             <a class="nav-link"> {{auth.getUserName()}}</a>
         </li>
-        <li *ngIf="auth.isAuthenticated()" class="nav-item">
+        <li *ngIf="auth.isAuthenticated()" class="nav-item clickable">
             <a class="nav-link" (click)="logout()">Logout</a>
         </li>
       </ul>
