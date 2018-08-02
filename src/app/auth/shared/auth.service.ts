@@ -41,7 +41,17 @@ export class AuthService{
             (token:string) => this.saveToken(token));
     }
 
+    public logout(){
+        localStorage.removeItem('booking_auth');
+        localStorage.removeItem('booking_meta');
+        this.decodedToken = new DecodedToken();
+    }
+
     public isAuthenticated(): boolean {
         return moment().isBefore(this.getExpiration());
+    }
+
+    public getUserName() : string {
+        return this.decodedToken.username;
     }
 }
