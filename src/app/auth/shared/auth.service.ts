@@ -1,10 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { JwtHelperService } from '@auth0/angular-jwt';
+const jwt = new JwtHelperService();
 import 'rxjs/Rx';
+
+class DecodedToken {
+    exp: number = 0;
+    username: string = '';
+}
 
 @Injectable()
 export class AuthService{
+    private decodedToken;
       
       constructor(private http: HttpClient){}
 
@@ -18,7 +26,10 @@ export class AuthService{
     }
 
     private saveToken(token: string) : string {
+        this.decodedToken = jwt.decodeToken(token);
+
         localStorage.setItem('booking_auth', token);
+        localStorage.setItem('booking_meta', JSON.stringify(this.decodedToken));
 
         return token;
     }
